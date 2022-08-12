@@ -1,2 +1,2 @@
-# techtuesdaychallenge
+# Tech Tuesday Challenge
 Tech Tuesday Challenge
