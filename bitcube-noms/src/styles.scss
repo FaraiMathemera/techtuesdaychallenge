@@ -11,14 +11,16 @@
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
+
+    font-family: 'Roboto', sans-serif;
    }
 
    .home-loader{
     position: absolute;
-  top: 20%;
-  left: 30%;
-  background-color: white;
-  height: 70%;
-  width: 40%;
-  border-radius: 25px;
+    top: 20%;
+    left: 30%;
+    background-color: white;
+    height: 70%;
+    width: 40%;
+    border-radius: 25px;
    }

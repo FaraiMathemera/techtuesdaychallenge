@@ -6,12 +6,76 @@
     align-items:center;
     justify-content:center;
 }
-
 .menu-item{
     height: 90%;
     width: 15%;
     border-radius: 5%;
-    border:solid;
+    border:solid 1px;
     border-color: grey;
     margin: 0.5%;
+}
+.price{
+    height: 15%;
+    width: 100%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+.name{
+    height: 10%;
+    width: 100;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+.coke{
+    width:100%;
+    height:37%;
+    background-image:url('../../../assets/images/coke-logo.png');
+    margin:0;
+    padding:0;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.fanta{
+    width:100%;
+    height:37%;
+    background-image:url('../../../assets/images/fanta-logo.png');
+    margin:0;
+    padding:0;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size:contain;
+}
+.food{
+    max-height:95%;
+    max-width:95%
+}
+.food-container{
+    height: 55%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+.options{
+    height:10%;
+    justify-content:end;
+    margin:10px;
+}
+.portion-size-1{
+    padding: 5px;
+    border-radius: 10%;
+    background-color: black;
+    color: white;
+    margin-right: 2px;
+}
+.portion-size-2{
+    padding: 5px;
+    border-radius: 10%;
+    background-color: black;
+    color: white;
+}
+.h3{
+    color: white;
 }

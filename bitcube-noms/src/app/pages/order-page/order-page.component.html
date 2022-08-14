@@ -1,9 +1,30 @@
 <div class="main" fxLayout="column">
-    <div class="logo"> logo</div>
     <div class="order" fxLayout="row">
-        <app-assistant class="assistant" fxFlex> </app-assistant>
-        <div class="order-items">order items</div>
+        <div class="left-panel" fxLayout="column">
+            <div class="logo"> logo</div>
+            <app-assistant class="assistant" fxFlex> </app-assistant>
+        </div>
+        <div class="order-items" fxLayout="column" fxFlex>
+            <h2>YOUR ORDER</h2>
+            <div class="invoice" fxFlex>
+                <div *ngFor="let item of items" fxLayout="column">
+                    <div class="invoice-items" fxLayout="row">
+                        <div class="item-count"><div class="circle">{{item.count}}</div></div>
+                        <div class="item-name">{{item.name}}</div>
+                        <div class="item-total">{{item.total}}</div>
+                    </div>
+                </div>
+            </div>          
+            <div class="total" fxLayout="row">
+                <div class="total-title"><b>TOTAL</b></div>
+                <div class="amount"><b>{{total}}</b></div>
+            </div>
+        </div>
+        <div class="order-online">
+            <div></div>
+            <h3>Scan code and order on your mobile</h3>
+        </div>
     </div>
-    <div class="feedback">feedback</div>
+    <!-- <div class="feedback">feedback</div> -->
     <app-menu class="menu" fxFlex>menu</app-menu>
 </div>
