@@ -8,7 +8,7 @@
             <h2>YOUR ORDER</h2>
             <div class="invoice" fxFlex>
                 <div *ngFor="let item of items" fxLayout="column">
-                    <div class="invoice-items" fxLayout="row">
+                    <div  *ngIf="item.count > 0" class="invoice-items" fxLayout="row">
                         <div class="item-count"><div class="circle">{{item.count}}</div></div>
                         <div class="item-name">{{item.name}}</div>
                         <div class="item-total">{{item.total}}</div>
