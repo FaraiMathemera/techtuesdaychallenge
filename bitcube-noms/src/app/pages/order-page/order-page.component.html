@@ -9,8 +9,9 @@
             <div class="invoice" fxFlex>
                 <div *ngFor="let item of items" fxLayout="column">
                     <div  *ngIf="item.count > 0" class="invoice-items" fxLayout="row">
-                        <div class="item-count"><div class="circle">{{item.count}}</div></div>
+                        <div class="item-count"></div>
                         <div class="item-name">{{item.name}}</div>
+                        <div class="item-notes" *ngIf="item.notes"><div class="notes">NOTES</div></div>
                         <div class="item-total">{{item.total}}</div>
                     </div>
                 </div>
