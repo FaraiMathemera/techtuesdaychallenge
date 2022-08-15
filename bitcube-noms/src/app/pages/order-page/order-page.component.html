@@ -1,17 +1,23 @@
 <div class="main" fxLayout="column">
-    <div class="order" fxLayout="row">
+    <div class="order" fxLayout="row" fxFlex>
         <div class="left-panel" fxLayout="column">
             <div class="logo"> logo</div>
-            <app-assistant class="assistant" fxFlex> </app-assistant>
+            <app-assistant class="assistant"> </app-assistant>
+            <div class="order-online">
+                <button style="margin: 10px;" (click)="startService()">Start</button>
+                <button style="margin: 10px;" (click)="stopService()">Stop</button>
+                <p>{{VoiceService.text}}</p>
+            <h3>Scan code and order on your mobile</h3>
+            </div>
         </div>
-        <div class="order-items" fxLayout="column" fxFlex>
+        <div class="order-items" fxLayout="column">
             <h2>YOUR ORDER</h2>
             <div class="invoice" fxFlex>
                 <div *ngFor="let item of items" fxLayout="column">
                     <div  *ngIf="item.count > 0" class="invoice-items" fxLayout="row">
-                        <div class="item-count"></div>
+                        <div class="item-count"><div class="circle">{{item.count}}</div></div>
                         <div class="item-name">{{item.name}}</div>
-                        <div class="item-notes" *ngIf="item.notes"><div class="notes">NOTES</div></div>
+                        <div class="item-notes" *ngIf="item.notes.length > 0"><div class="notes">NOTES</div></div>
                         <div class="item-total">{{item.total}}</div>
                     </div>
                 </div>
@@ -25,11 +31,6 @@
                 <div class="amount"><b>{{total}}</b></div>
             </div>
         </div>
-        <div class="order-online">
-            <div></div>
-            <h3>Scan code and order on your mobile</h3>
-        </div>
     </div>
-    <!-- <div class="feedback">feedback</div> -->
     <app-menu class="menu" fxFlex>menu</app-menu>
 </div>
