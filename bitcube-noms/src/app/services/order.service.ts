@@ -5,28 +5,18 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root',
 })
 export class OrderService {
-  // Item counts
-  baconCheeseBurgerCount = 1;
-  beefBurgerCount = 1;
-  chickenBurgerCount = 0;
-  wings8Count = 0;
-  wings12Count = 0;
-  chipsLargeCount = 0;
-  chipsMediumCount = 0;
-  cokeCount = 0;
-  fantaCount = 0;
-
   // Item prices
-  prices: any = {
-    baconCheeseBurger: 120,
-    beefBurger: 100,
-    chickenBurger: 95,
-    wings8: 50,
-    wings12: 80,
-    chipsLarge: 35,
-    chipsMedium: 20,
-    soda: 15,
-  };
+  prices: any = [
+    { name: 'baconCheeseBurger', price: 120 },
+    { name: 'beefBurger', price: 100 },
+    { name: 'chickenBurger', price: 95 },
+    { name: 'wings8', price: 50 },
+    { name: 'wings12', price: 80 },
+    { name: 'chipsLarge', price: 35 },
+    { name: 'chipsMedium', price: 20 },
+    { name: 'coke', price: 15 },
+    { name: 'fanta', price: 15 },
+  ];
 
   // Invoice items
   items: {
@@ -37,56 +27,56 @@ export class OrderService {
   }[] = [
     {
       name: 'Bacon & Cheese Burger',
-      count: this.baconCheeseBurgerCount,
-      total: this.baconCheeseBurgerCount * this.prices.baconCheeseBurger,
+      count: 0,
+      total: 0,
       notes: [],
     },
     {
       name: 'Beef Burger',
-      count: this.beefBurgerCount,
-      total: this.beefBurgerCount * this.prices.beefBurger,
+      count: 0,
+      total: 0,
       notes: [],
     },
     {
       name: 'Chicken Burger',
-      count: this.chickenBurgerCount,
-      total: this.chickenBurgerCount * this.prices.chickenBurger,
+      count: 0,
+      total: 0,
       notes: [],
     },
     {
       name: 'Chicken Wings (8pcs)',
-      count: this.wings8Count,
-      total: this.wings8Count * this.prices.wings8,
+      count: 0,
+      total: 0,
       notes: [],
     },
     {
       name: 'Chicken Wings (12pcs)',
-      count: this.wings12Count,
-      total: this.wings12Count * this.prices.wings12,
+      count: 0,
+      total: 0,
       notes: [],
     },
     {
       name: 'Chips (Large)',
-      count: this.chipsLargeCount,
-      total: this.chipsLargeCount * this.prices.chipsLarge,
+      count: 0,
+      total: 0,
       notes: [],
     },
     {
       name: 'Chips (Medium)',
-      count: this.chipsMediumCount,
-      total: this.chipsMediumCount * this.prices.chipsMedium,
+      count: 0,
+      total: 0,
       notes: [],
     },
     {
       name: 'Coke',
-      count: this.cokeCount,
-      total: this.cokeCount * this.prices.soda,
+      count: 0,
+      total: 0,
       notes: [],
     },
     {
       name: 'Fanta',
-      count: this.fantaCount,
-      total: this.fantaCount * this.prices.soda,
+      count: 0,
+      total: 0,
       notes: [],
     },
   ];
@@ -94,16 +84,23 @@ export class OrderService {
   private _order = new BehaviorSubject<any>(this.items);
   public order = this._order.asObservable();
 
+  private _menu = new BehaviorSubject<boolean>(true);
+  public menu = this._menu.asObservable();
+
   constructor() {}
 
   initOrder() {
     this._order.next(this.items);
   }
 
+  setMenu(show: boolean) {
+    this._menu.next(show);
+  }
+
   addItem(
     item: string,
     amount: number,
-    addRemove?: 'add' | 'remove' | 'clear'
+    addRemove?: 'add' | 'remove' | 'clear' | null
   ) {
     switch (item) {
       case 'cheeseBurger':
@@ -112,6 +109,7 @@ export class OrderService {
         } else {
           this.items[0].count = amount;
         }
+        this.updatePrice(0);
         break;
       case 'burger':
         if (addRemove) {
@@ -119,6 +117,7 @@ export class OrderService {
         } else {
           this.items[1].count = amount;
         }
+        this.updatePrice(1);
         break;
       case 'chickenBurger':
         if (addRemove) {
@@ -126,6 +125,7 @@ export class OrderService {
         } else {
           this.items[2].count = amount;
         }
+        this.updatePrice(2);
         break;
       case 'wings8':
         if (addRemove) {
@@ -133,6 +133,7 @@ export class OrderService {
         } else {
           this.items[3].count = amount;
         }
+        this.updatePrice(3);
         break;
       case 'wings12':
         if (addRemove) {
@@ -140,6 +141,7 @@ export class OrderService {
         } else {
           this.items[4].count = amount;
         }
+        this.updatePrice(4);
         break;
       case 'chipsMedium':
         if (addRemove) {
@@ -147,6 +149,7 @@ export class OrderService {
         } else {
           this.items[5].count = amount;
         }
+        this.updatePrice(5);
         break;
       case 'chipsLarge':
         if (addRemove) {
@@ -154,6 +157,7 @@ export class OrderService {
         } else {
           this.items[6].count = amount;
         }
+        this.updatePrice(6);
         break;
       case 'coke':
         if (addRemove) {
@@ -161,6 +165,7 @@ export class OrderService {
         } else {
           this.items[7].count = amount;
         }
+        this.updatePrice(7);
         break;
       case 'fanta':
         if (addRemove) {
@@ -168,6 +173,7 @@ export class OrderService {
         } else {
           this.items[8].count = amount;
         }
+        this.updatePrice(8);
         break;
     }
   }
@@ -248,5 +254,10 @@ export class OrderService {
     } else {
       this.items[index].count = 0;
     }
+  }
+
+  updatePrice(index: number) {
+    this.items[index].total =
+      this.items[index].count * this.prices[index].price;
   }
 }

@@ -11,6 +11,7 @@ export class OrderPageComponent implements OnInit {
   total: number = 0;
   tax: number = 0;
   items: any;
+  showMenu = false;
 
   constructor(
     public VoiceService: VoiceRecognitionService,
@@ -21,15 +22,18 @@ export class OrderPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.OrderService.menu.subscribe((x) => {
+      this.showMenu = x;
+    });
     this.OrderService.order.subscribe((items) => {
       this.items = items;
       items.forEach((x: any) => {
         this.total = this.total + x.count * x.total;
       });
+      console.log(this.total, this.tax);
+      this.tax = +(0.15 * this.total).toFixed(2);
+      this.total = +this.total.toFixed(2);
     });
-
-    this.tax = +(0.15 * this.total).toFixed(2);
-    this.total = +this.total.toFixed(2);
   }
 
   startService() {
