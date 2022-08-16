@@ -86,12 +86,17 @@ body {
   animation-delay: .3s;
 }
 .wrapper span{
-  position: absolute;
+  position: relative;
   top:150px;
-  font-family: 'Lato';
   font-size: 35px;
-  letter-spacing: 5px;
+  letter-spacing: 1px;
   color: $color-loader;
-  left:15%;
   width: 100%;
+  justify-content: center;
+  display: flex;
+}
+.logo{
+  height: 100px;
+  width: 100px;
+  padding-bottom: 20%;
 }
