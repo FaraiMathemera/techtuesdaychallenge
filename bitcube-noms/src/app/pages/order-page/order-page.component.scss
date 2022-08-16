@@ -69,6 +69,7 @@ h2{
     width: 50%;
     justify-content: flex-end;
     display: flex;
+    margin-right: 10%;
 }
 .total-title{
     width: 50%;
@@ -114,10 +115,34 @@ h2{
     text-align: center;
     align-items: center;
 }
+.notes{
+    margin-top: 12%;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    color: blue;
+}
 .item-total{
     height: 100%;
     width: 20%;
-    justify-content: flex-end;
+    justify-content: center;
     display: flex;
     padding:  10px;
+}
+.emptyCart{
+    height: 25%;
+    width: 17%;
+    margin-left: 40%;
+    padding-bottom: 5%;
+    
+}
+.emptyCartText{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+.cart{
+    justify-content:center;
+    color: gray;
 }

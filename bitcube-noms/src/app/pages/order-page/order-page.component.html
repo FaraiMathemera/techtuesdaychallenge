@@ -12,15 +12,19 @@
         </div>
         <div class="order-items" fxLayout="column">
             <h2>YOUR ORDER</h2>
-            <div class="invoice" fxFlex>
+            <div *ngIf="!emptyOrder" class="invoice" fxFlex>
                 <div *ngFor="let item of items" fxLayout="column">
                     <div  *ngIf="item.count > 0" class="invoice-items" fxLayout="row">
                         <div class="item-count"><div class="circle">{{item.count}}</div></div>
                         <div class="item-name">{{item.name}}</div>
-                        <div class="item-notes" *ngIf="item.notes.length > 0"><div class="notes">NOTES</div></div>
+                        <div class="item-notes"><div *ngIf="item.notes.length > 0" class="notes">NOTES</div></div>
                         <div class="item-total">{{item.total}}</div>
                     </div>
                 </div>
+            </div>
+            <div *ngIf="emptyOrder" class="cart" fxLayout="column" fxFlex>
+                <img class="emptyCart" src="../../../assets/images/emptyCart.png">
+                <div class="emptyCartText">Your order is empty</div>
             </div>  
             <div class="total" fxLayout="row">
                 <div class="total-title"><b>TAX</b></div>

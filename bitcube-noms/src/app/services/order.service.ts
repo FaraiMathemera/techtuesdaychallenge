@@ -81,11 +81,18 @@ export class OrderService {
     },
   ];
 
+  total = { tax: 0, total: 0 };
+
   private _order = new BehaviorSubject<any>(this.items);
   public order = this._order.asObservable();
 
   private _menu = new BehaviorSubject<boolean>(true);
   public menu = this._menu.asObservable();
+
+  private _total = new BehaviorSubject<{ tax: number; total: number }>(
+    this.total
+  );
+  public totals = this._total.asObservable();
 
   constructor() {}
 
@@ -176,6 +183,7 @@ export class OrderService {
         this.updatePrice(8);
         break;
     }
+    this.updateTotal();
   }
 
   addNotes(item: string, notes: string) {
@@ -244,6 +252,7 @@ export class OrderService {
         }
         break;
     }
+    this.updateTotal();
   }
 
   setAmount(index: number, amount: string) {
@@ -254,10 +263,23 @@ export class OrderService {
     } else {
       this.items[index].count = 0;
     }
+    this.updateTotal();
   }
 
   updatePrice(index: number) {
     this.items[index].total =
       this.items[index].count * this.prices[index].price;
+  }
+
+  updateTotal() {
+    this.total.tax = 0;
+    this.total.total = 0;
+    this.items.forEach((x: any) => {
+      this.total.total = this.total.total + x.count * x.total;
+    });
+
+    this.total.tax = +(0.15 * this.total.total).toFixed(2);
+    this.total.total = +this.total.total.toFixed(2);
+    this._total.next(this.total);
   }
 }

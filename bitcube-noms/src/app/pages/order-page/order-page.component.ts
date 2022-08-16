@@ -12,6 +12,7 @@ export class OrderPageComponent implements OnInit {
   tax: number = 0;
   items: any;
   showMenu = false;
+  emptyOrder = true;
 
   constructor(
     public VoiceService: VoiceRecognitionService,
@@ -27,12 +28,13 @@ export class OrderPageComponent implements OnInit {
     });
     this.OrderService.order.subscribe((items) => {
       this.items = items;
-      items.forEach((x: any) => {
-        this.total = this.total + x.count * x.total;
-      });
-      console.log(this.total, this.tax);
-      this.tax = +(0.15 * this.total).toFixed(2);
-      this.total = +this.total.toFixed(2);
+    });
+    this.OrderService.totals.subscribe((totals) => {
+      this.total = totals.total;
+      this.tax = totals.tax;
+      if (totals.total > 0) {
+        this.emptyOrder = false;
+      }
     });
   }
 

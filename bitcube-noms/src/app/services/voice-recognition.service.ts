@@ -64,14 +64,6 @@ export class VoiceRecognitionService {
     ) {
       this.add(message);
     } else if (
-      message.includes('I want to remove') ||
-      message.includes('remove') ||
-      message.includes('please remove') ||
-      message.includes('get rid of') ||
-      message.includes('i dont want')
-    ) {
-      this.remove(message);
-    } else if (
       message.includes('show menu') ||
       message.includes('see the menu') ||
       message.includes('need the menu')
@@ -123,6 +115,8 @@ export class VoiceRecognitionService {
       text.includes('cheeseburger')
     ) {
       this.OrderService.addItem('cheeseBurger', 1, 'add');
+      this.notes('cheeseBurger', text);
+      this.remove('cheeseBurger', text);
       this.clearText();
     } else if (
       text.includes('chicken') ||
@@ -131,9 +125,13 @@ export class VoiceRecognitionService {
       text.includes('chicken burger')
     ) {
       this.OrderService.addItem('chickenBurger', 1, 'add');
+      this.notes('chickenBurger', text);
+      this.remove('chickenBurger', text);
       this.clearText();
     } else {
       this.OrderService.addItem('burger', 1, 'add');
+      this.notes('burger', text);
+      this.remove('burger', text);
       this.clearText();
     }
   }
@@ -147,6 +145,8 @@ export class VoiceRecognitionService {
     ) {
       const number = text.match(/\d+/);
       this.OrderService.addItem('cheeseBurger', number, null);
+      this.notes('cheeseBurger', text);
+      this.remove('cheeseBurger', text);
       this.clearText();
     } else if (
       text.includes('chicken') ||
@@ -155,11 +155,15 @@ export class VoiceRecognitionService {
       text.includes('chicken burgers')
     ) {
       const number = text.match(/\d+/);
-      this.OrderService.addItem('burger', number, null);
+      this.OrderService.addItem('chickenBurger', number, null);
+      this.notes('chickenBurger', text);
+      this.remove('chickenBurger', text);
       this.clearText();
     } else {
       const number = text.match(/\d+/);
       this.OrderService.addItem('burger', number, null);
+      this.notes('burger', text);
+      this.remove('burger', text);
       this.clearText();
     }
   }
@@ -172,9 +176,13 @@ export class VoiceRecognitionService {
       text.includes('big')
     ) {
       this.OrderService.addItem('wings12', 1, 'add');
+      this.notes('wings12', text);
+      this.remove('wings12', text);
       this.clearText();
     } else {
       this.OrderService.addItem('wings8', 1, 'add');
+      this.notes('wings8', text);
+      this.remove('wings8', text);
       this.clearText();
     }
   }
@@ -182,9 +190,13 @@ export class VoiceRecognitionService {
   chips(text: any) {
     if (text.includes('large') || text.includes('big')) {
       this.OrderService.addItem('chipsLarge', 1, 'add');
+      this.notes('chipsLarge', text);
+      this.remove('chipsLarge', text);
       this.clearText();
     } else {
       this.OrderService.addItem('chipsMedium', 1, 'add');
+      this.notes('chipsMedium', text);
+      this.remove('chipsMedium', text);
       this.clearText();
     }
   }
@@ -193,9 +205,13 @@ export class VoiceRecognitionService {
     if (text.includes('cokes') || text.includes('coca colas')) {
       const number = text.match(/\d+/);
       this.OrderService.addItem('coke', number, null);
+      this.notes('coke', text);
+      this.remove('coke', text);
       this.clearText();
     } else {
       this.OrderService.addItem('coke', 1, 'add');
+      this.notes('coke', text);
+      this.remove('coke', text);
       this.clearText();
     }
   }
@@ -204,16 +220,42 @@ export class VoiceRecognitionService {
     if (text.includes('fantas')) {
       const number = text.match(/\d+/);
       this.OrderService.addItem('fanta', number, null);
+      this.notes('fanta', text);
+      this.remove('fanta', text);
       this.clearText();
     } else {
       this.OrderService.addItem('fanta', 1, 'add');
-      console.log(123);
+      this.notes('fanta', text);
+      this.remove('fanta', text);
       this.clearText();
     }
   }
 
-  remove(text: any) {
-    console.log('instruction' + text);
+  notes(item: string, text: any) {
+    console.log('Notes -----' + text);
+    if (
+      text.includes('with') ||
+      text.includes('without') ||
+      text.includes('no')
+    ) {
+      this.OrderService.addNotes(item, text);
+      this.clearText();
+    }
+  }
+
+  remove(item: string, text: any) {
+    if (text.includes('all')) {
+      this.OrderService.addItem(item, 1, 'clear');
+      this.clearText();
+    } else if (
+      text.includes('remove') ||
+      text.includes('dont want') ||
+      text.includes("don't want") ||
+      text.includes('rid of')
+    ) {
+      this.OrderService.addItem(item, 1, 'remove');
+      this.clearText();
+    }
   }
 
   clearText() {
