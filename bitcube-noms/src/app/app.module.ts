@@ -20,7 +20,7 @@ const appRoutes: Routes = [
   { path: 'tracking', component: MobileTrackingComponent },
   { path: 'order', component: OrderPageComponent },
   { path: 'order-online', component: OrderOnlinePageComponent },
-  { path: 'despatch', component: DespatchPageComponent },
+  { path: 'dispatch', component: DespatchPageComponent },
   { path: 'payment', component: PaymentPageComponent },
 ];
 @NgModule({

@@ -1,0 +1,37 @@
+.logo{
+    height: 100%;
+    width: 40%;
+}
+.pageName{
+    margin-top: 2%;
+    width: 60%;
+    justify-content: center;
+    display: flex;
+    font-size: 90px;
+    font-weight: 600;
+}
+.dispatch-heading{
+    height: 20%;
+}
+.table{
+    height: 80%
+}
+.ready{
+    height: 100%;
+    width: 60%;
+    border: solid 1px gray;
+}
+.backlog{
+    height: 100%;
+    width: 40%;
+    border: solid 1px gray;
+}
+.label{
+    justify-content: center;
+    display: flex; 
+    color: gray;
+    font-size: 30px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    border-bottom: solid 1px gray;
+}

@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { state } from 'src/app/enum/state';
+import { CloudService } from 'src/app/services/cloud/cloud.service';
+import { Vehicles } from 'src/app/types/types';
 
 @Injectable({
   providedIn: 'root',
@@ -82,7 +84,12 @@ export class OrderService {
     },
   ];
 
+  completeOrder: Vehicles[] = [];
+
   total = { tax: 0, total: 0 };
+
+  private _orderVehicle = new BehaviorSubject<any>(this.items);
+  public orderVehicle = this._orderVehicle.asObservable();
 
   private _order = new BehaviorSubject<any>(this.items);
   public order = this._order.asObservable();
@@ -98,10 +105,15 @@ export class OrderService {
   );
   public totals = this._total.asObservable();
 
-  constructor() {}
+  constructor(private CloudService: CloudService) {}
 
   initOrder() {
     this._order.next(this.items);
+  }
+
+  async initVehicleOrder() {
+    this.completeOrder = await this.CloudService.getOrders();
+    this._orderVehicle.next(this.completeOrder);
   }
 
   setMenu(show: boolean) {
