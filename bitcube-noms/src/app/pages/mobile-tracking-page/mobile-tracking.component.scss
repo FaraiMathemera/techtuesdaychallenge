@@ -1,0 +1,56 @@
+.tracking{
+    height: 100%;
+    width: 100%;
+    background-color:#89ebc5;
+    justify-content: center;
+    display: flex;
+}
+.tracking-elements{
+    height: 100%;
+    justify-content: center;
+    width: 50%;
+    display: flex;
+}
+.gif{
+    width: 300px;
+    height: 300px;
+    justify-content: center;
+    display: flex;
+}
+.logo-container{
+    width: 100%;
+    height: 50%;
+    justify-content: center;
+    display: flex;
+    padding: 10%;
+}
+.tracking-loader{
+    top: 10%;
+    width: 100%;
+    height: 30%;
+    justify-content: center;
+    display: flex;
+}
+.Feedback-container{
+    width: 100%;
+    height: 30%;
+    justify-content: center;
+    display: flex;
+    }
+h2{
+    // height: 150px;
+    // width: 400px;
+    justify-content: center;
+    display: flex;
+    padding: 5%;
+    font-size: 50px;
+    font-weight: 600;
+    // border-radius: 10px;
+    // border: solid 5px lightseagreen;
+    // background-color:dodgerblue;
+}
+.progress-bar{
+    margin-top: 50px;
+    height: 10px;
+    justify-content: center;
+}

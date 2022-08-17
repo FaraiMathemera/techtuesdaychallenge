@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { OrderService } from 'src/app/services/order/order.service';
 import { AudioService } from 'src/app/services/audio/audio.service';
+import { state } from 'src/app/enum/state';
 
 declare var webkitSpeechRecognition: any;
 
@@ -12,6 +13,7 @@ export class VoiceRecognitionService {
   isStoppedSpeechRecog = false;
   public text = '';
   tempWords: string = '';
+  readyToPay = false;
 
   constructor(
     private OrderService: OrderService,
@@ -92,7 +94,16 @@ export class VoiceRecognitionService {
       message.includes("that's it") ||
       message.includes("I'm done")
     ) {
-      this.AudioService.confirm;
+      this.AudioService.confirm();
+      this.readyToPay = true;
+      this.clearText();
+    } else if (
+      (message.includes('yes') ||
+        message.includes('yeah') ||
+        message.includes('yup')) &&
+      this.readyToPay === true
+    ) {
+      this.OrderService.setState(state.ReadyForPayment);
       this.clearText();
     } else {
       this.AudioService.repeat;

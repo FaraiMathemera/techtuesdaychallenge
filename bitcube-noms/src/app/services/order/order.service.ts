@@ -302,4 +302,6 @@ export class OrderService {
     this.total.total = +this.total.total.toFixed(2);
     this._total.next(this.total);
   }
+
+  placeOrder() {}
 }

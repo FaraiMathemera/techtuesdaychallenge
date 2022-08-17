@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { VoiceRecognitionService } from 'src/app/services/voice-recognition/voice-recognition.service';
 import { OrderService } from 'src/app/services/order/order.service';
 import { AudioService } from 'src/app/services/audio/audio.service';
+import { toDataURL } from 'qrcode';
+import { state } from 'src/app/enum/state';
 
 @Component({
   selector: 'app-order-page',
@@ -14,6 +16,7 @@ export class OrderPageComponent implements OnInit {
   items: any;
   showMenu = false;
   emptyOrder = true;
+  paymentURL: string | undefined = undefined;
 
   constructor(
     public VoiceService: VoiceRecognitionService,
@@ -38,7 +41,14 @@ export class OrderPageComponent implements OnInit {
         this.emptyOrder = false;
       }
     });
+
+    this.OrderService.state.subscribe((states) => {
+      if (states === state.ReadyForPayment) {
+        this.createLink();
+      }
+    });
     this.AudioService.welcome();
+    this.createLink();
   }
 
   startService() {
@@ -47,5 +57,11 @@ export class OrderPageComponent implements OnInit {
 
   stopService() {
     this.VoiceService.stop();
+  }
+
+  createLink() {
+    toDataURL('www.google.com', (error, data) => {
+      this.paymentURL = data;
+    });
   }
 }

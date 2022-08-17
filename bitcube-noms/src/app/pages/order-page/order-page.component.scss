@@ -7,6 +7,13 @@
     height: 40%;
     width: 100%;
 }
+.qrCode-container{
+    // margin-left: 20%;
+    height: 40%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
 .order{
     min-height: 65%;
     max-height: 100%;
@@ -46,9 +53,19 @@
     min-height: 20%;
     max-height: 35%;
 }
+.qrCode{
+    height: 150px;
+    width: 150px;
+}
 h2{
     justify-content: center;
     display: flex;
+}
+h3{
+    justify-content: center;
+    display: flex;
+    font-size: 20px;
+    font-weight: 400;
 }
 .total{
     max-height: 20%;
