@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { VoiceRecognitionService } from 'src/app/services/voice-recognition.service';
-import { OrderService } from 'src/app/services/order.service';
+import { VoiceRecognitionService } from 'src/app/services/voice-recognition/voice-recognition.service';
+import { OrderService } from 'src/app/services/order/order.service';
+import { AudioService } from 'src/app/services/audio/audio.service';
 
 @Component({
   selector: 'app-order-page',
@@ -16,7 +17,8 @@ export class OrderPageComponent implements OnInit {
 
   constructor(
     public VoiceService: VoiceRecognitionService,
-    private OrderService: OrderService
+    private OrderService: OrderService,
+    private AudioService: AudioService
   ) {
     this.VoiceService.init();
     this.OrderService.initOrder();
@@ -36,6 +38,7 @@ export class OrderPageComponent implements OnInit {
         this.emptyOrder = false;
       }
     });
+    this.AudioService.welcome();
   }
 
   startService() {
