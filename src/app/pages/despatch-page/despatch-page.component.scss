@@ -1,0 +1,94 @@
+.logo{
+    height: 100%;
+    width: 40%;
+}
+.pageName{
+    margin-top: 2%;
+    width: 60%;
+    justify-content: center;
+    display: flex;
+    font-size: 90px;
+    font-weight: 600;
+}
+.dispatch-heading{
+    height: 20%;
+}
+.table{
+    height: 80%
+}
+.ready{
+    height: 100%;
+    width: 60%;
+    border: solid 1px gray;
+}
+.backlog{
+    height: 100%;
+    width: 40%;
+    border: solid 1px gray;
+}
+.label{
+    justify-content: center;
+    display: flex; 
+    color: gray;
+    font-size: 30px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    border-bottom: solid 1px gray;
+}
+.backlog-items{
+
+}
+.ready-items{
+    max-height: 5%;
+    width: 100%;
+    border-radius: 5px;
+    border:solid 1px;
+    border-color: grey;
+    margin: 0.5%;
+}
+.item-name{
+    height: 100%;
+    width: 50%;
+    justify-content: flex-start;
+    display: flex;
+    padding:  10px;
+}
+.item-count{
+    height: 100%;
+    width: 10%;
+    justify-content: center;
+    margin-left:  5%;
+}
+.circle{
+    height: 35px;
+    width: 35px;
+    display: flex;
+    border-radius: 10%;
+    background-color: green;
+    justify-content: center;
+    color: white;
+    margin-top: 2%;
+    text-align: center;
+    align-items: center;
+}
+.order-details{
+    height: 20%;
+    justify-content: start;
+    width: 100%;
+    border-radius: 5px;
+    border:solid 1px;
+    border-color: grey;
+}
+.details{
+    justify-content: flex-start;
+    display: flex;
+    font-size: 20px;
+}
+.order-buttons{
+    height: 10%;
+    width: 100%;
+}
+.complete-order-btn{
+    background-color: green;
+    color: white;
+}

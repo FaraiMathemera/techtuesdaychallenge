@@ -1,0 +1,43 @@
+<div class="main" fxLayout="column">
+    <div class="order" fxLayout="row" fxFlex>
+        <div class="left-panel" fxLayout="column">
+            <img class="logo" src="../../../assets/images/logo.png">
+            <app-assistant class="assistant"> </app-assistant>
+            <div class="order-online">
+                <!-- <button style="margin: 10px;" (click)="startService()">Start</button>
+                <button style="margin: 10px;" (click)="stopService()">Stop</button>
+                <p>{{VoiceService.text}}</p> -->
+            <!-- <h3>Scan code and order on your mobile</h3>
+            <div class="qrCode-container"><img *ngIf="paymentURL" class="qrCode" src={{paymentURL}}></div>       -->
+            </div>
+        </div>
+        <div class="order-items" fxLayout="column">
+            <ng-container *ngIf="!emptyOrder">
+                <h2>YOUR ORDER</h2>
+                <div class="invoice" fxFlex>
+                    <div *ngFor="let item of items" fxLayout="column">
+                        <div  *ngIf="item.count > 0" class="invoice-items" fxLayout="row">
+                            <div class="item-count"><div class="circle">{{item.count}}</div></div>
+                            <div class="item-name">{{item.name}}</div>
+                            <div class="item-notes"><div *ngIf="item.notes.length > 0" class="notes">NOTES</div></div>
+                            <div class="item-total">{{item.total}}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="total" fxLayout="row">
+                    <div class="total-title"><b>TAX</b></div>
+                    <div class="amount"><b>{{tax}}</b></div>
+                </div>        
+                <div class="total" fxLayout="row">
+                    <div class="total-title"><b>TOTAL</b></div>
+                    <div class="amount"><b>{{total}}</b></div>
+                </div>
+            </ng-container>          
+            <div *ngIf="emptyOrder" class="cart" fxLayout="column" fxFlex>
+                <img class="emptyCart" src="../../../assets/images/shopping-bag.png">
+                <div class="emptyCartText">Your order is empty</div>
+            </div>  
+        </div>
+    </div>
+    <app-menu *ngIf="showMenu" class="menu" fxFlex>menu</app-menu>
+</div>

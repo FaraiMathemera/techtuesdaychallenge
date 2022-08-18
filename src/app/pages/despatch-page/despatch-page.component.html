@@ -1,0 +1,26 @@
+<div fxLayout="column" style="background-color: white; height: 100%">
+    <div class="dispatch-heading" fxLayout="row"><img class="logo" src="../../../assets/images/logo.png"><div class="pageName">Dispatch</div></div>
+    <div class="table" fxLayout="row">
+        <div class="backlog" fxLayout="column">
+            <div class="label">ORDERS</div>
+            <ng-container *ngFor="let order of orders"><div class="backlog-items"></div></ng-container></div>
+        <div class="ready" fxLayout="column"><div class="label">Ready</div>
+        <ng-container *ngIf="readyOrders">
+            <div class="order-details" fxLayout="column">
+                <div class="details" >Order Number: {{orderNumber}}</div>
+                <div class="details" >Registration: {{registration}}</div>
+                <div class="details" >Colour: {{color}}</div>
+            </div>
+            <ng-container *ngFor="let readyOrder of readyOrders">
+            <div class="ready-items">
+                <div class="item-count"><div class="circle">{{readyOrder.count}}</div></div>
+                <div class="item-name">{{readyOrder.name}}</div>
+            </div>
+            </ng-container>
+            <div class="order-buttons" fxLayout="rows">
+                <button class="complete-order-btn" (click)="completeOrder()">COMPLETE ORDER</button>
+            </div>
+        </ng-container>   
+    </div>
+    </div>
+</div>
