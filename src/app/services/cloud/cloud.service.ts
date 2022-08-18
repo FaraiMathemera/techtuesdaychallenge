@@ -11,8 +11,8 @@ export class CloudService {
   // AWSRegion = process.env.region;
   // AWSVehicleTable = process.env.tableName;
 
-  AWSKey = 'AKIAXRLG23VE2UBSWSWA';
-  AWSSecret = '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';
+  AWSKey = '';
+  AWSSecret = '';
   AWSRegion = 'us-east-2';
   AWSVehicleTable = 'DriveThroughVehicles';
 
