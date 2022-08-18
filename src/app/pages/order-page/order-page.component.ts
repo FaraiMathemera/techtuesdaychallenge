@@ -47,8 +47,8 @@ export class OrderPageComponent implements OnInit {
         this.createLink();
       }
     });
-    this.AudioService.welcome();
-    this.createLink();
+
+    // this.AudioService.welcome();
     this.startService();
   }
 

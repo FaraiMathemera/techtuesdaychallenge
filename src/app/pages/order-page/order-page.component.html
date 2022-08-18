@@ -7,8 +7,8 @@
                 <!-- <button style="margin: 10px;" (click)="startService()">Start</button>
                 <button style="margin: 10px;" (click)="stopService()">Stop</button>
                 <p>{{VoiceService.text}}</p> -->
-            <!-- <h3>Scan code and order on your mobile</h3>
-            <div class="qrCode-container"><img *ngIf="paymentURL" class="qrCode" src={{paymentURL}}></div>       -->
+            <h3 *ngIf="paymentURL">Scan the code to pay</h3>
+            <div class="qrCode-container"><img *ngIf="paymentURL" class="qrCode" src={{paymentURL}}></div>      
             </div>
         </div>
         <div class="order-items" fxLayout="column">

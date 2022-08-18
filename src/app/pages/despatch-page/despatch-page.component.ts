@@ -10,9 +10,9 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class DespatchPageComponent implements OnInit {
   constructor(
-    private OrderService: OrderService,
-    public snackBar: MatSnackBar
-  ) {
+    private OrderService: OrderService
+  ) // public snackBar: MatSnackBar
+  {
     this.OrderService.initVehicleOrder();
   }
 
@@ -42,8 +42,8 @@ export class DespatchPageComponent implements OnInit {
 
   completeOrder() {
     this.OrderService.setVehicleOrder(this.index, 'completed');
-    this.snackBar.open('Order completed', '', {
-      duration: 2000,
-    });
+    // this.snackBar.open('Order completed', '', {
+    //   duration: 2000,
+    // });
   }
 }

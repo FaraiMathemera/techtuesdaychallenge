@@ -51,7 +51,6 @@ const appRoutes: Routes = [
     MatSliderModule,
     MatProgressBarModule,
     HttpClientModule,
-    MatSnackBar,
   ],
   providers: [ApiService],
   bootstrap: [AppComponent],
