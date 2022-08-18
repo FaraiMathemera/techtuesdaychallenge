@@ -84,11 +84,11 @@ export class OrderService {
     },
   ];
 
-  completeOrder: Vehicles[] = [];
+  completeOrder: Vehicles = {};
 
   total = { tax: 0, total: 0 };
 
-  private _orderVehicle = new BehaviorSubject<any>(this.items);
+  private _orderVehicle = new BehaviorSubject<any>(this.completeOrder);
   public orderVehicle = this._orderVehicle.asObservable();
 
   private _order = new BehaviorSubject<any>(this.items);

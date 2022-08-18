@@ -11,13 +11,25 @@ export class DespatchPageComponent implements OnInit {
   constructor(private OrderService: OrderService) {
     this.OrderService.initVehicleOrder();
   }
-  order: any[] = [];
-  ready: any[] = [];
+
+  orders?: any[] = [];
+  readyOrders?: any[] = [{}];
+  orderNumber: number | undefined = 0;
+  registration: string | undefined = 'CY234234';
+  color: string | undefined = 'blue';
+
   ngOnInit(): void {
-    this.OrderService.orderVehicle.subscribe((orders: Vehicles[]) => {
-      orders.forEach((order: any) => {
-        if (order.collecting === true) {
-        } else if (order.waiting === true) {
+    this.OrderService.orderVehicle.subscribe((Orders: Vehicles) => {
+      // this.orders = [];
+      // this.readyOrders = [];
+      Orders?.order?.forEach((order?: any) => {
+        if (Orders.collecting === true) {
+          this.orderNumber = Orders?.vehicleId;
+          this.registration = Orders.registration;
+          this.color = Orders.color;
+          this.readyOrders = Orders?.order;
+        } else if (Orders.waiting === true) {
+          this?.orders?.push(Orders);
         }
       });
     });

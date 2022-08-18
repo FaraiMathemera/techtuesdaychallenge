@@ -49,6 +49,7 @@ export class OrderPageComponent implements OnInit {
     });
     this.AudioService.welcome();
     this.createLink();
+    this.startService();
   }
 
   startService() {
@@ -63,5 +64,9 @@ export class OrderPageComponent implements OnInit {
     toDataURL('www.google.com', (error, data) => {
       this.paymentURL = data;
     });
+  }
+
+  ngOnDestroy() {
+    this.stopService();
   }
 }

@@ -11,8 +11,8 @@ export class CloudService {
   // AWSRegion = process.env.region;
   // AWSVehicleTable = process.env.tableName;
 
-  AWSKey = '';
-  AWSSecret = '';
+  AWSKey = 'AKIAXRLG23VE2UBSWSWA';
+  AWSSecret = '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';
   AWSRegion = 'us-east-2';
   AWSVehicleTable = 'DriveThroughVehicles';
 
@@ -44,8 +44,8 @@ export class CloudService {
     // console.log(result);
   }
 
-  async getOrders(): Promise<Vehicles[]> {
-    const order: Vehicles[] = [];
+  async getOrders(): Promise<Vehicles> {
+    const order: Vehicles = {};
     return order;
   }
 
